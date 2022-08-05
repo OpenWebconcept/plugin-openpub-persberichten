@@ -1,3 +1,9 @@
+## [2.0.1]
+
+### Feat
+
+-   Add internal information field to single press-releases.
+
 ## [2.0.0]
 
 ### Chore
