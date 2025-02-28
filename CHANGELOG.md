@@ -1,3 +1,9 @@
+## [2.0.4]
+
+### Fix
+
+- Use correct field name
+
 ## [2.0.3]
 
 ### Feat
