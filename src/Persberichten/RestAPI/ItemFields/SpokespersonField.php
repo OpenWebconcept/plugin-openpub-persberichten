@@ -32,7 +32,7 @@ class SpokespersonField extends CreatesFields
         $itemModel = Persbericht::makeFrom($post);
 		$spokesperson = [
         	'name' => $itemModel->getMeta('press_mailing_spokesperson_name', '', true, '_owc_'),
-			'url' => $itemModel->getMeta('press_mailing_spokesperson_name', '', true, '_owc_'),
+			'url' => $itemModel->getMeta('press_mailing_spokesperson_url', '', true, '_owc_'),
 		];
 		$spokesperson = array_filter($spokesperson);
 
