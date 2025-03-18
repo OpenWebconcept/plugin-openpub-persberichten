@@ -1,3 +1,9 @@
+## [2.1.0]
+
+### Feat
+
+- Add featured image field to API response
+
 ## [2.0.4]
 
 ### Fix
