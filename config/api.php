@@ -17,6 +17,7 @@ return [
                 'mailinglists' => OWC\Persberichten\RestAPI\ItemFields\TypeField::class,
                 'spokesperson' => OWC\Persberichten\RestAPI\ItemFields\SpokespersonField::class,
                 'subtitle' => OWC\Persberichten\RestAPI\ItemFields\SubtitleField::class,
+				'image' => OWC\Persberichten\RestAPI\ItemFields\FeaturedImageField::class,
             ],
         ]
     ],
