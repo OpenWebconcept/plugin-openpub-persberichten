@@ -18,6 +18,7 @@ return [
                 'spokesperson' => OWC\Persberichten\RestAPI\ItemFields\SpokespersonField::class,
                 'subtitle' => OWC\Persberichten\RestAPI\ItemFields\SubtitleField::class,
 				'image' => OWC\Persberichten\RestAPI\ItemFields\FeaturedImageField::class,
+				'embargo' => OWC\Persberichten\RestAPI\ItemFields\EmbargoField::class,
             ],
         ]
     ],

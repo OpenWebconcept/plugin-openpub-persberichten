@@ -70,6 +70,13 @@ class Persbericht extends AbstractRepository
         return $this->plugin->settings->getAdditionalMessage();
     }
 
+    public function excludeFuture() {
+        $this->query([
+            'post_status' => ['publish'],
+        ]);
+        return $this;
+    }
+
     /**
      * Add tax query to current query.
      *

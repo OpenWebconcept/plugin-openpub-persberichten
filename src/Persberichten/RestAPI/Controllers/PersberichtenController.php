@@ -47,16 +47,20 @@ class PersberichtenController extends BaseController
     /**
      * Get an individual post item by slug.
      *
-     * @param $request $request
-     *
      * @return array|WP_Error
      */
     public function getItemBySlug(WP_REST_Request $request)
     {
         $slug = $request->get_param('slug');
+        $includeEmbargo = (bool) $request->get_param('include_embargo');
 
-        $item = (new Persbericht($this->plugin))
-            ->findBySlug($slug);
+        $itemRepository = (new Persbericht($this->plugin));
+        if (!$includeEmbargo && is_user_logged_in()) {
+            $itemRepository->excludeFuture();
+        }
+
+        // Find the item by slug
+        $item = $itemRepository->findBySlug($slug);
 
         if (!$item) {
             return new WP_Error('no_item_found', sprintf('Item with slug "%s" not found', $slug), [
