@@ -21,7 +21,7 @@ return [
     ],
     'subtitle' => [
         'id'         => 'openpub_subtitle',
-        'title'      => __('Subtitel', 'persberichten'),
+        'title'      => __('Subtitle', 'persberichten'),
         'post_types' => ['press-item'],
         'context'    => 'normal',
         'priority'   => 'high',
@@ -29,7 +29,7 @@ return [
         'fields'     => [
             'subtitle'   => [
                 'subtitle' => [
-                    'name' => __('Subtitel', 'persberichten'),
+                    'name' => __('Subtitle', 'persberichten'),
                     'id'   => 'press_mailing_subtitle',
                     'type' => 'text',
                 ]
@@ -56,7 +56,7 @@ return [
     ],
     'spokesperson' => [
         'id'         => 'openpub_spokesperson',
-        'title'      => __('Woordvoerder', 'persberichten'),
+        'title'      => __('Spokesperson', 'persberichten'),
         'post_types' => ['press-item'],
         'context'    => 'normal',
         'priority'   => 'high',
@@ -64,7 +64,7 @@ return [
         'fields'     => [
             'spokesperson' => [
                 'spokesperson_name' => [
-                    'name' => __('Naam', 'persberichten'),
+                    'name' => __('Name', 'persberichten'),
                     'id'   => 'press_mailing_spokesperson_name',
                     'type' => 'text',
                 ],

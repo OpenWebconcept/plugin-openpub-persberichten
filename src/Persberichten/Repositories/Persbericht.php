@@ -70,10 +70,11 @@ class Persbericht extends AbstractRepository
         return $this->plugin->settings->getAdditionalMessage();
     }
 
-    public function excludeFuture() {
+    public function excludeFuture(): self {
         $this->query([
             'post_status' => ['publish'],
         ]);
+
         return $this;
     }
 
