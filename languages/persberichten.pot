@@ -1,36 +1,41 @@
-# Copyright (C) 2024 Yard | Digital Agency
+# Copyright (C) 2025 Yard | Digital Agency
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Yard | Persberichten 2.0.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/persberichten\n"
+"Project-Id-Version: Yard | Persberichten 2.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plugin-openpub-persberichten\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-09T05:33:54+00:00\n"
+"POT-Creation-Date: 2025-05-19T14:58:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: persberichten\n"
 
 #. Plugin Name of the plugin
+#: persberichten.php
 msgid "Yard | Persberichten"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: persberichten.php
 msgid "https://www.openwebconcept.nl/"
 msgstr ""
 
 #. Description of the plugin
+#: persberichten.php
 msgid "Press releases are a variation on OpenPub items. A press release can be added to a laposta campaign based on the connected taxonomy. This only happens when the press release is saved for the first time."
 msgstr ""
 
 #. Author of the plugin
+#: persberichten.php
 msgid "Yard | Digital Agency"
 msgstr ""
 
 #. Author URI of the plugin
+#: persberichten.php
 msgid "https://www.yard.nl/"
 msgstr ""
 
@@ -44,6 +49,33 @@ msgstr ""
 
 #: config/metaboxes.php:15
 msgid "Internal info is only included in the newsletter. Please make sure to select the correct internal mailing list."
+msgstr ""
+
+#: config/metaboxes.php:24
+#: config/metaboxes.php:32
+msgid "Subtitle"
+msgstr ""
+
+#: config/metaboxes.php:41
+#: config/metaboxes.php:49
+#: src/Persberichten/PostType/PostTypeServiceProvider.php:33
+msgid "Embargo"
+msgstr ""
+
+#: config/metaboxes.php:52
+msgid "Use the publish date to set the public release date"
+msgstr ""
+
+#: config/metaboxes.php:59
+msgid "Spokesperson"
+msgstr ""
+
+#: config/metaboxes.php:67
+msgid "Name"
+msgstr ""
+
+#: config/metaboxes.php:72
+msgid "URL"
 msgstr ""
 
 #: config/posttypes.php:23

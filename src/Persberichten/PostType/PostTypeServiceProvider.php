@@ -31,7 +31,6 @@ class PostTypeServiceProvider extends ServiceProvider
         $embargo  = (bool) $itemModel->getMeta('press_mailing_embargo', '', true, '_owc_');
         if ($embargo) {
             $postStates[] = __('Embargo', 'persberichten');
-
         }
         return $postStates;
     }
