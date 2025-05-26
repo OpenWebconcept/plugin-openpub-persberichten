@@ -52,10 +52,10 @@ class PersberichtenController extends BaseController
     public function getItemBySlug(WP_REST_Request $request)
     {
         $slug = $request->get_param('slug');
-        $includeEmbargo = (bool) $request->get_param('include_embargo');
+        $includeFuture = (bool) $request->get_param('include_future');
 
         $itemRepository = (new Persbericht($this->plugin));
-        if (!$includeEmbargo && is_user_logged_in()) {
+        if (!$includeFuture && is_user_logged_in()) {
             $itemRepository->excludeFuture();
         }
 

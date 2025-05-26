@@ -19,20 +19,6 @@ class PostTypeServiceProvider extends ServiceProvider
     {
         $this->plugin->loader->addAction('init', $this, 'registerPostTypes');
         $this->plugin->loader->addAction('pre_get_posts', $this, 'orderByPublishedDate');
-        $this->plugin->loader->addFilter('display_post_states', $this, 'addPostStates', 10, 2);
-    }
-
-    public function addPostStates(array $postStates, \WP_Post $post): array
-    {
-        if ($post->post_type !== 'press-item' || $post->post_status !== 'future') {
-            return $postStates;
-        }
-        $itemModel = Persbericht::makeFrom($post);
-        $embargo  = (bool) $itemModel->getMeta('press_mailing_embargo', '', true, '_owc_');
-        if ($embargo) {
-            $postStates[] = __('Embargo', 'persberichten');
-        }
-        return $postStates;
     }
 
     /**
