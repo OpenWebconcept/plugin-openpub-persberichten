@@ -36,24 +36,6 @@ return [
             ],
         ]
     ],
-    'embargo' => [
-        'id'         => 'openpub_embargo',
-        'title'      => __('Embargo', 'persberichten'),
-        'post_types' => ['press-item'],
-        'context'    => 'side',
-        'priority'   => 'high',
-        'autosave'   => true,
-        'fields'     => [
-            'embargo' => [
-                'embargo_date' => [
-                    'name' => __('Embargo', 'persberichten'),
-                    'id'   => 'press_mailing_embargo',
-                    'type' => 'checkbox',
-                    'desc' => __('Use the publish date to set the public release date', 'persberichten'),
-                ],
-            ]
-        ],
-    ],
     'spokesperson' => [
         'id'         => 'openpub_spokesperson',
         'title'      => __('Spokesperson', 'persberichten'),
