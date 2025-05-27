@@ -1,3 +1,7 @@
+## [2.3.0]
+
+- Remove Embargo option
+
 ## [2.2.0]
 
 - Add Embargo option
