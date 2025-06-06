@@ -125,6 +125,7 @@ class ConnectedField extends CreatesFields
                     'terms'    => $mailingListIDs,
                 ]
             ],
+            'post_status' => 'publish',
             'post__not_in' => [$persberichtID]
         ];
 
