@@ -1,3 +1,7 @@
+## [2.3.1]
+
+- Only return published posts as as connect posts
+
 ## [2.3.0]
 
 - Remove Embargo option
