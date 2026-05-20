@@ -12,6 +12,8 @@ use WP_Mock;
 
 class PostTypeServiceProviderTest extends TestCase
 {
+    protected $post;
+
     protected function setUp(): void
     {
         WP_Mock::setUp();

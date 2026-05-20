@@ -1,8 +1,9 @@
 ## [2.3.2]
 
 - Bump minimum PHP version to 7.4
-- Fix PHP 8.2+ "Creation of dynamic property" deprecation on `Plugin::$settings`
+- Fix PHP 8.2+ "Creation of dynamic property" deprecations on `Plugin::$settings` and `ConnectedField::$respository`
 - Fix PHP 8.4 "Implicitly marking parameter as nullable" deprecations on `AbstractRepository::addGlobalField()` and `Persbericht::__construct()`
+- Declare previously-implicit properties on `ConfigTest` and `PostTypeServiceProviderTest` so the test suite runs clean on PHP 8.2+
 
 ## [2.3.1]
 

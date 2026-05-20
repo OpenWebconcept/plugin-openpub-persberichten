@@ -7,6 +7,9 @@ use OWC\Persberichten\Tests\TestCase;
 
 class ConfigTest extends TestCase
 {
+    /** @var string */
+    protected $configDirectory;
+
     protected function setUp(): void
     {
         \WP_Mock::setUp();

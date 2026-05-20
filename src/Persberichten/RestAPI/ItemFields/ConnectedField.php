@@ -19,6 +19,11 @@ class ConnectedField extends CreatesFields
     protected $plugin;
 
     /**
+     * @var Persbericht
+     */
+    protected $respository;
+
+    /**
      * @param Plugin $plugin
      */
     public function __construct(Plugin $plugin)
