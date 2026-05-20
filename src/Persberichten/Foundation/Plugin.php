@@ -20,7 +20,7 @@ class Plugin
 	 *
 	 * @var string VERSION
 	 */
-	const VERSION = '2.3.1';
+	const VERSION = '2.3.2';
 
 	/**
 	 * Path to the root of the plugin.
@@ -42,6 +42,13 @@ class Plugin
 	 * @var Loader
 	 */
 	public $loader;
+
+	/**
+	 * Settings page options.
+	 *
+	 * @var \OWC\Persberichten\Settings\SettingsPageOptions
+	 */
+	public $settings;
 
 	/**
 	 * Constructor of the BasePlugin

@@ -1,3 +1,8 @@
+## [2.3.2]
+
+- Bump minimum PHP version to 7.4
+- Fix PHP 8.2+ "Creation of dynamic property" deprecation on `Plugin::$settings`
+
 ## [2.3.1]
 
 - Only return published posts as as connect posts
