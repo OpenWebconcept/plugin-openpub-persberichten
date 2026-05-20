@@ -60,13 +60,25 @@ class Plugin
 	public function __construct(string $rootPath)
 	{
 		$this->rootPath = $rootPath;
-		load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
 
 		$this->loader = new Loader;
 
 		$this->config = new Config($this->rootPath . '/config');
 		$this->config->setProtectedNodes(['core']);
 		$this->config->boot();
+	}
+
+	/**
+	 * Load the plugin textdomain.
+	 *
+	 * Must run on `init` or later — WordPress 6.7 emits a "_load_textdomain_just_in_time was
+	 * called incorrectly" notice when this is called any earlier (e.g. on `plugins_loaded`).
+	 *
+	 * @return void
+	 */
+	public function loadTextdomain()
+	{
+		load_plugin_textdomain($this->getName(), false, $this->getName() . '/languages/');
 	}
 
 	/**
@@ -93,6 +105,7 @@ class Plugin
 		$this->callServiceProviders('boot');
 
 		// Register the Hook loader.
+		$this->loader->addAction('init', $this, 'loadTextdomain', 1);
 		$this->loader->addAction('init', $this, 'filterPlugin', 4);
 		$this->loader->register();
 

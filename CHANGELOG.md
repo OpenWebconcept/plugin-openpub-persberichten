@@ -4,6 +4,7 @@
 - Fix PHP 8.2+ "Creation of dynamic property" deprecations on `Plugin::$settings` and `ConnectedField::$respository`
 - Fix PHP 8.4 "Implicitly marking parameter as nullable" deprecations on `AbstractRepository::addGlobalField()` and `Persbericht::__construct()`
 - Declare previously-implicit properties on `ConfigTest` and `PostTypeServiceProviderTest` so the test suite runs clean on PHP 8.2+
+- Defer `load_plugin_textdomain()` to the `init` hook to silence the WordPress 6.7 "_load_textdomain_just_in_time was called incorrectly" notice
 
 ## [2.3.1]
 
