@@ -2,6 +2,7 @@
 
 - Bump minimum PHP version to 7.4
 - Fix PHP 8.2+ "Creation of dynamic property" deprecation on `Plugin::$settings`
+- Fix PHP 8.4 "Implicitly marking parameter as nullable" deprecations on `AbstractRepository::addGlobalField()` and `Persbericht::__construct()`
 
 ## [2.3.1]
 

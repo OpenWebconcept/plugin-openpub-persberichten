@@ -213,7 +213,7 @@ abstract class AbstractRepository
      *
      * @return void
      */
-    public static function addGlobalField(string $key, CreatesFields $creator, Closure $conditional = null): void
+    public static function addGlobalField(string $key, CreatesFields $creator, ?Closure $conditional = null): void
     {
         static::$globalFields[] = [
             'key'         => $key,

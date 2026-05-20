@@ -36,7 +36,7 @@ class Persbericht
      * @param array      $data
      * @param array|null $meta
      */
-    public function __construct(array $data, array $meta = null)
+    public function __construct(array $data, ?array $meta = null)
     {
         $this->data = $data;
         $this->meta = is_null($meta) ? \get_post_meta($data['ID']) : $meta;
