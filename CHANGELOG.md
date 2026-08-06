@@ -1,3 +1,7 @@
+## [2.3.6]
+
+- Fix the WordPress 6.7 "_load_textdomain_just_in_time was called incorrectly" notice for the `persberichten` domain: boot the plugin on `after_setup_theme` instead of `plugins_loaded`, and register the textdomain path before the config files (which call `__()` at include time) are loaded
+
 ## [2.3.2]
 
 - Bump minimum PHP version to 7.4

@@ -20,7 +20,7 @@ class Plugin
 	 *
 	 * @var string VERSION
 	 */
-	const VERSION = '2.3.2';
+	const VERSION = '2.3.6';
 
 	/**
 	 * Path to the root of the plugin.
@@ -65,14 +65,13 @@ class Plugin
 
 		$this->config = new Config($this->rootPath . '/config');
 		$this->config->setProtectedNodes(['core']);
-		$this->config->boot();
 	}
 
 	/**
 	 * Load the plugin textdomain.
 	 *
-	 * Must run on `init` or later — WordPress 6.7 emits a "_load_textdomain_just_in_time was
-	 * called incorrectly" notice when this is called any earlier (e.g. on `plugins_loaded`).
+	 * Must run before the config files are loaded: those call __() at include
+	 * time, which loads translations just-in-time from the path registered here.
 	 *
 	 * @return void
 	 */
@@ -84,12 +83,15 @@ class Plugin
 	/**
 	 * Boot the plugin.
 	 *
-	 * @hook plugins_loaded
+	 * @hook after_setup_theme
 	 *
 	 * @return bool
 	 */
 	public function boot(): bool
 	{
+		$this->loadTextdomain();
+		$this->config->boot();
+
 		$dependencyChecker = new DependencyChecker($this->config->get('core.dependencies'));
 
 		if ($dependencyChecker->failed()) {
@@ -105,7 +107,6 @@ class Plugin
 		$this->callServiceProviders('boot');
 
 		// Register the Hook loader.
-		$this->loader->addAction('init', $this, 'loadTextdomain', 1);
 		$this->loader->addAction('init', $this, 'filterPlugin', 4);
 		$this->loader->register();
 
