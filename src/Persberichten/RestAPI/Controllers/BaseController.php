@@ -56,9 +56,27 @@ abstract class BaseController
      */
     protected function getPaginatorParams(WP_REST_Request $request, int $limit = 10): array
     {
-        return array_merge($request->get_params(), [
+        return [
             'posts_per_page' => $request->get_param('limit') ?: $limit,
             'paged'          => $request->get_param('page') ?: 0
-        ]);
+        ];
+    }
+
+    public function paginatorArguments(): array
+    {
+        return [
+            'limit' => [
+                'description' => __('Number of items per page, -1 for all items.', 'persberichten'),
+                'type'        => 'integer',
+                'minimum'     => -1,
+                'default'     => 10,
+            ],
+            'page' => [
+                'description' => __('Page number.', 'persberichten'),
+                'type'        => 'integer',
+                'minimum'     => 1,
+                'default'     => 1,
+            ],
+        ];
     }
 }

@@ -28,27 +28,33 @@ class RestAPIServiceProvider extends ServiceProvider
 
     public function registerRoutes()
     {
+        $controller = new PersberichtenController($this->plugin);
+
         register_rest_route($this->namespace, 'persberichten', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new PersberichtenController($this->plugin), 'getItems'],
+            'callback'            => [$controller, 'getItems'],
+            'args'                => $controller->collectionArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'persberichten/(?P<id>\d+)', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new PersberichtenController($this->plugin), 'getItem'],
+            'callback'            => [$controller, 'getItem'],
+            'args'                => $controller->singleArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'persberichten/(?P<slug>[\w-]+)', [
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new PersberichtenController($this->plugin), 'getItemBySlug'],
+            'callback'            => [$controller, 'getItemBySlug'],
+            'args'                => $controller->slugArguments(),
             'permission_callback' => '__return_true',
         ]);
 
         register_rest_route($this->namespace, 'persberichten/type/(?<type>[\w-]+)', [ // ?mailingslist=
             'methods'             => WP_REST_Server::READABLE,
-            'callback'            => [new PersberichtenController($this->plugin), 'getTypeFilteredItems'],
+            'callback'            => [$controller, 'getTypeFilteredItems'],
+            'args'                => $controller->typeArguments(),
             'permission_callback' => '__return_true',
         ]);
     }
