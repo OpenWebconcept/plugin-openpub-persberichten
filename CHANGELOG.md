@@ -1,3 +1,13 @@
+## [2.4.0]
+
+### Feat
+
+- Declare REST API route args, so params are documented and validated by WordPress (malformed values now return a 400)
+
+### Fix
+
+- Only pass `limit` and `page` on to the query instead of every request param
+
 ## [2.3.2]
 
 - Bump minimum PHP version to 7.4
