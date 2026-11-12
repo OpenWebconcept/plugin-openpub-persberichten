@@ -61,4 +61,22 @@ abstract class BaseController
             'paged'          => $request->get_param('page') ?: 0
         ];
     }
+
+    public function paginatorArguments(): array
+    {
+        return [
+            'limit' => [
+                'description' => __('Number of items per page, -1 for all items.', 'persberichten'),
+                'type'        => 'integer',
+                'minimum'     => -1,
+                'default'     => 10,
+            ],
+            'page' => [
+                'description' => __('Page number.', 'persberichten'),
+                'type'        => 'integer',
+                'minimum'     => 1,
+                'default'     => 1,
+            ],
+        ];
+    }
 }
