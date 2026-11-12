@@ -30,7 +30,7 @@ class PersberichtenController extends BaseController
      */
     public function getItem(WP_REST_Request $request)
     {
-        $id = (int) $request->get_param('id');
+        $id = $request->get_param('id');
 
         $item = (new Persbericht($this->plugin))
             ->find($id);
@@ -52,7 +52,7 @@ class PersberichtenController extends BaseController
     public function getItemBySlug(WP_REST_Request $request)
     {
         $slug = $request->get_param('slug');
-        $includeFuture = (bool) $request->get_param('include_future');
+        $includeFuture = $request->get_param('include_future');
 
         $itemRepository = (new Persbericht($this->plugin));
         if (!$includeFuture && is_user_logged_in()) {
@@ -88,5 +88,57 @@ class PersberichtenController extends BaseController
         $query = $items->getQuery();
 
         return $this->addPaginator($data, $query);
+    }
+
+    /**
+     * Route args for the persberichten endpoint.
+     */
+    public function collectionArguments(): array
+    {
+        return $this->paginatorArguments();
+    }
+
+    /**
+     * Route args for the persberichten/{id} endpoint.
+     */
+    public function singleArguments(): array
+    {
+        return [
+            'id' => [
+                'description' => __('ID of the press release.', 'persberichten'),
+                'type'        => 'integer',
+            ],
+        ];
+    }
+
+    /**
+     * Route args for the persberichten/{slug} endpoint.
+     */
+    public function slugArguments(): array
+    {
+        return [
+            'slug' => [
+                'description' => __('Slug of the press release.', 'persberichten'),
+                'type'        => 'string',
+            ],
+            'include_future' => [
+                'description' => __('Include scheduled press releases, for logged-in users.', 'persberichten'),
+                'type'        => 'boolean',
+                'default'     => false,
+            ],
+        ];
+    }
+
+    /**
+     * Route args for the persberichten/type/{type} endpoint.
+     */
+    public function typeArguments(): array
+    {
+        return array_merge([
+            'type' => [
+                'description' => __('Slug of the press_mailing_list term to filter on.', 'persberichten'),
+                'type'        => 'string',
+            ],
+        ], $this->paginatorArguments());
     }
 }
