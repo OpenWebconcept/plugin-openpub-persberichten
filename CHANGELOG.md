@@ -7,6 +7,7 @@
 ### Fix
 
 - Only pass `limit` and `page` on to the query instead of every request param
+- Only list published press releases, also for requests with credentials
 
 ## [2.3.2]
 

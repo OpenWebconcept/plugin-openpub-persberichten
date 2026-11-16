@@ -2,7 +2,10 @@
 
 namespace OWC\Persberichten\Tests\Base\RestAPI\Controllers;
 
+use Mockery;
+use OWC\Persberichten\Foundation\Plugin;
 use OWC\Persberichten\Repositories\Persbericht;
+use OWC\Persberichten\RestAPI\Controllers\PersberichtenController;
 use OWC\Persberichten\Tests\TestCase;
 use WP_Mock;
 
@@ -52,5 +55,21 @@ class PersberichtControllerTest extends TestCase
         $actual = Persbericht::addFilterTypeParameters();
 
         $this->assertNotEquals($expected, $actual);
+    }
+
+    /** @test */
+    public function collections_only_query_published_press_releases()
+    {
+        $request = Mockery::mock('WP_REST_Request');
+        $request->shouldReceive('get_param')->with('type')->andReturn('test');
+        $request->shouldReceive('get_param')->andReturn(null);
+
+        $controller = new PersberichtenController(Mockery::mock(Plugin::class));
+
+        foreach (['getItems', 'getTypeFilteredItems'] as $method) {
+            $response = $controller->$method($request);
+
+            $this->assertEquals(['publish'], $response['pagination']['query_parameters']['post_status'], $method);
+        }
     }
 }
