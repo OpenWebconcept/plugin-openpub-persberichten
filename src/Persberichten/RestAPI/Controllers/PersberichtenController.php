@@ -10,8 +10,10 @@ class PersberichtenController extends BaseController
 {
     public function getItems(WP_REST_Request $request)
     {
+        // Pinned because requests with credentials would otherwise also get private items.
         $items = (new Persbericht($this->plugin))
-            ->query($this->getPaginatorParams($request));
+            ->query($this->getPaginatorParams($request))
+            ->query(['post_status' => ['publish']]);
 
         $data  = $items->all();
         $query = $items->getQuery();
@@ -82,6 +84,7 @@ class PersberichtenController extends BaseController
     {
         $items = (new Persbericht($this->plugin))
             ->query($this->getPaginatorParams($request))
+            ->query(['post_status' => ['publish']])
             ->query(Persbericht::addFilterTypeParameters($request->get_param('type')));
 
         $data  = $items->all();
